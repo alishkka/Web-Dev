@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+<header>
+    <h1>Interest places</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="button">Previous page</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <img src="https://almatycity.kz/wp-content/uploads/2022/07/ESENTAI_PARK_COMPLEX_MALL_048.jpg" alt="Slide 1">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://avatars.mds.yandex.net/get-altay/9720767/2a00000188f8762201248d51d6d74a2c82c1/orig" alt="Slide 2">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="https://www.shutterstock.com/image-photo/almaty-kazakhstan-jul-25-2015-600nw-300322838.jpg" alt="Slide 3">
+    </div>
+
+    <!-- Кнопки переключения слайдов -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<footer>
+    <p>© 2024 My Website. All rights reserved.</p>
+</footer>
+
+<script>
+    let slideIndex = 1;
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        const slides = document.getElementsByClassName("mySlides");
+        const dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+    }
+
+    showSlides(slideIndex);
+</script>
+
+</body>
+</html>

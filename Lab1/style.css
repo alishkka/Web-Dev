@@ -1,0 +1,104 @@
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: lightgray;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #808080; /* Серый цвет фона */
+}
+
+.marquee p {
+    display: inline-block;
+    animation: marquee 20s linear infinite; /* Время и скорость анимации */
+    color: black; /* Цвет текста */
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+
+.first{
+    display: flex;
+    margin-left: 300px;
+}
+
+.second{
+    display: flex;
+    margin-right: 200px;
+}
+
+main {
+    padding: 0; /* Убираем отступы у элемента main */
+    margin-bottom: -20px; /* Убираем отступ снизу */
+}
+
+.main-body {
+    text-align: center;
+    margin: 0 auto; /* Центрирование по горизонтали */
+    max-width: 800px; /* Увеличиваем максимальную ширину */
+    height: 700px;
+    display: flex; /* Для центрирования по вертикали */
+    flex-direction: column; /* Для центрирования по вертикали */
+    justify-content: center; /* Для центрирования по вертикали */
+    background-color: #f0f0f0; /* Более гармоничный цвет фона */
+}
+
+.main-body img {
+    width: 400px; /* Устанавливаем новую ширину */
+    height: 250px; /* Устанавливаем новую высоту */
+    max-width: auto;
+    margin-left: 200px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px; /* Возвращаем обычный отступ сверху */
+}
+
+.buttons {
+    display: flex; /* Делаем элементы дочернего контейнера "buttons" флекс-контейнером */
+    justify-content: space-around; /* Распределяем пространство вокруг элементов внутри "buttons" */
+    margin-top: 20px; /* Увеличиваем расстояние между кнопками */
+}
+
+.buttons .nature,
+.buttons .interest-places {
+    flex: 1; /* Растягиваем кнопки равномерно внутри контейнера */
+    margin: 0 5px; /* Добавляем небольшие отступы между кнопками */
+}
+
+.buttons a {
+    display: inline-block;
+    background-color: #555;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px; /* Увеличиваем расстояние между кнопками */
+}
+
+.buttons a:last-child {
+    margin-right: 0; /* Убираем правый отступ для последней кнопки */
+}

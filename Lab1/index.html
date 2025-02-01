@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Almaty City</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.onload = function() {
+            // Запрашиваем имя пользователя
+            var name = prompt("Пожалуйста, введите ваше имя:", "");
+
+            // Запрашиваем оценку сайта
+            var rating = prompt("Пожалуйста, оцените сайт от 1 до 10:", "");
+
+            // Выводим сообщение с именем и оценкой сайта
+            if (name !== null && rating !== null) {
+                alert("Спасибо, " + name + ", за вашу оценку " + rating + "!");
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Site Guide</h1>
+        <div class="buttons">
+            <a href="index.html">Home</a>
+            <a href="#main-body">Main Body</a>
+            <a href="#contact">Contact Information</a>
+        </div>
+    </header>
+    <main>
+        <section id="main-body" class="main-body">
+            <h2>Introduction to Almaty City</h2>
+            <img src="https://kalpak-travel.com/wp-content/uploads/2018/05/almaty-2.jpg" alt="Image">
+            <p>On that website you will find places that you should visit based on your interests.</p>
+
+            <div class="buttons">
+                <a href="index2.html" class="nature">Nature</a>
+                <a href="index3.html" class="interest-places">Interest places</a>
+            </div>
+        </section>
+    </main>
+    <footer id="contact">
+        <h3>Contact Information</h3>
+        <p>Email: example@example.com</p>
+        <p>Phone: 123-456-7890</p>
+    </footer>
+</body>
+</html>
