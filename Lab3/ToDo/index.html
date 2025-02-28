@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #333;
+    color: #ddd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#header {
+    text-align: center;
+    background-color: #444;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.sidebar {
+    width: 30%;
+    background: #444;
+    padding: 15px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.main-content {
+    width: 70%;
+    padding: 15px;
+}
+
+.add-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+input, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+#task-input {
+    width: 250px;
+    border: 2px solid #666;
+    background: #555;
+    color: white;
+}
+
+#add-button, #tomorrow-button {
+    background-color: #666;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#add-button:hover, #tomorrow-button:hover {
+    background-color: #777;
+}
+
+.block-tasks {
+    background: #444;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #555;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.delete-button, .done-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+}
+  </style>
+  <title>ToDo List</title>
+</head>
+
+<body>
+<script>
+  function addTask(isTomorrow) {
+    const taskInput = document.getElementById("task-input");
+    const taskName = taskInput.value;
+    if (taskName === "") {
+      alert("Введите задачу");
+      return;
+    }
+    const newTask = document.createElement("div");
+    newTask.classList.add("task-item");
+    const label = document.createElement("label");
+    label.textContent = taskName;
+    
+    const doneButton = document.createElement("button");
+    doneButton.classList.add("done-button");
+    doneButton.textContent = "✔";
+    doneButton.onclick = () => moveTaskToCompleted(newTask);
+    
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "❌";
+    deleteButton.onclick = () => newTask.remove();
+    
+    newTask.appendChild(label);
+    newTask.appendChild(doneButton);
+    newTask.appendChild(deleteButton);
+    
+    if (isTomorrow) {
+      document.querySelector(".block-tasks-tomorrow").appendChild(newTask);
+    } else {
+      document.querySelector(".block-tasks-today").appendChild(newTask);
+    }
+    taskInput.value = "";
+  }
+
+  function moveTaskToCompleted(task) {
+    document.querySelector(".block-tasks-completed").appendChild(task);
+    task.querySelector(".done-button").remove();
+  }
+</script>
+
+<h1 id="header">ToDo list</h1>
+<div class="container">
+  <div class="sidebar">
+    <h3>Задачи на завтра</h3>
+    <div class="block-tasks block-tasks-tomorrow"></div>
+  </div>
+  <div class="main-content">
+    <div class="add-block">
+      <input id="task-input" type="text" placeholder="Добавить задачу">
+      <button id="add-button" onclick="addTask(false)">Добавить</button>
+      <button id="tomorrow-button" onclick="addTask(true)">На завтра</button>
+    </div>
+    <div class="block-tasks block-tasks-today">
+      <h3>Задачи на сегодня</h3>
+    </div>
+    <div class="block-tasks block-tasks-completed">
+      <h3>Выполненные задачи</h3>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
