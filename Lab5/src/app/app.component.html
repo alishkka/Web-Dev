@@ -1,0 +1,12 @@
+<header>
+    <h1>Shop</h1>
+    <div class="categories">
+      <button *ngFor="let category of categories" (click)="selectCategory(category)">
+        {{ category }}
+      </button>
+    </div>
+  </header>
+  
+  <!-- Компонент ProductList получает текущую категорию -->
+  <app-product-list [selectedCategory]="selectedCategory"></app-product-list>
+  

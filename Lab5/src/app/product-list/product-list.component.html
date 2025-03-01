@@ -1,0 +1,9 @@
+<div class="products-container">
+    <app-product-item 
+      *ngFor="let product of filteredProducts" 
+      [product]="product"
+      (like)="likeProduct(product)"
+      (remove)="removeProduct(product)">
+    </app-product-item>
+  </div>
+  

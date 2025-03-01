@@ -1,0 +1,21 @@
+<div class="product-card">
+    <div class="gallery">
+      <img *ngFor="let image of product.imageUrls; let first = first" 
+           [src]="image" 
+           [class.main-image]="first" 
+           [alt]="product.name">
+    </div>
+  
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+    <p class="rating">⭐ Rating: {{ product.rating }}</p>
+    <p>👍 Likes: {{ product.likes }}</p>
+  
+    <a [href]="product.link" target="_blank">View on Kaspi.kz</a>
+  
+    <div class="buttons">
+      <button (click)="likeProduct()">Like</button>
+      <button (click)="removeProduct()">Remove</button>
+    </div>
+  </div>
+  

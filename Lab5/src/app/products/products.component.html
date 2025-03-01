@@ -1,0 +1,33 @@
+<!-- Список категорий -->
+<div class="categories">
+    <button *ngFor="let category of categories" (click)="selectCategory(category)">
+      {{ category.name }}
+    </button>
+  </div>
+  
+  <!-- Отображение продуктов выбранной категории -->
+  <div *ngIf="selectedCategory" class="products-container">
+    <h2>{{ selectedCategory.name }}</h2>
+  
+    <div class="product-card" *ngFor="let product of selectedCategory.products">
+      <div class="gallery">
+        <img *ngFor="let image of product.imageUrls; let first = first" 
+             [src]="image" 
+             [class.main-image]="first" 
+             [alt]="product.name">
+      </div>
+  
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p class="rating">⭐ Rating: {{ product.rating }}</p>
+      <p>👍 Likes: {{ product.likes }}</p>
+  
+      <a [href]="product.link" target="_blank">View on Kaspi.kz</a>
+  
+      <div class="buttons">
+        <button (click)="likeProduct(product)">Like</button>
+        <button (click)="removeProduct(product)">Remove</button>
+      </div>
+    </div>
+  </div>
+  
